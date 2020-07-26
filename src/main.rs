@@ -1,3 +1,5 @@
+mod generate_random;
+
 fn main() {
-    println!("Hello, world!");
+    generate_random::random_number();
 }
