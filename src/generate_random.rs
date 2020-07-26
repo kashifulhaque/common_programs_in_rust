@@ -14,3 +14,12 @@ pub fn random_number() {
     println!("Random signed 32-bit integer: {}", rng.gen::<i32>());
     println!("Random 32-bit floating-point value: {}", rng.gen::<f32>());
 }
+
+pub fn random_number_in_range(min: i32, max: i32) -> i32 {
+    let mut rng = rand::thread_rng();
+
+    // Generate within range
+    let num: i32 = rng.gen_range(min, max);
+    println!("Random signed 32-bit integer between {} & {}: {}", min, max, num);
+    num
+}
