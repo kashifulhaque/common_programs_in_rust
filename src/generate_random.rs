@@ -36,3 +36,19 @@ pub fn generate_password(size: u8) -> String {
 
     password
 }
+
+pub fn generate_password_from_chars(size: u8) -> String {
+    const CHARSET: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ\
+                              abcdefghijklmnopqrstuvwxyz\
+                              0123456789)(*&^%$#@!~";
+
+    let mut rng = rand::thread_rng();
+    let password: String = (0..size)
+        .map(|_| {
+            let index = rng.gen_range(0, CHARSET.len());
+            CHARSET[index] as char
+        })
+        .collect();
+
+    password
+}
