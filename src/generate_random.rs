@@ -1,3 +1,4 @@
+use rand::distributions::Alphanumeric;
 use rand::Rng;
 
 pub fn random_number() {
@@ -20,6 +21,18 @@ pub fn random_number_in_range(min: i32, max: i32) -> i32 {
 
     // Generate within range
     let num: i32 = rng.gen_range(min, max);
-    println!("Random signed 32-bit integer between {} & {}: {}", min, max, num);
+    println!(
+        "Random signed 32-bit integer between {} & {}: {}",
+        min, max, num
+    );
     num
+}
+
+pub fn generate_password(size: u8) -> String {
+    let password: String = rand::thread_rng()
+        .sample_iter(&Alphanumeric)
+        .take(size as usize)
+        .collect();
+
+    password
 }
